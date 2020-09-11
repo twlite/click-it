@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Me</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-        
         body {
             background-color: #3a404a;
             color: #FFFFFF;
-            font-family: 'Acme', sans-serif;
         }
 
         #counter {
@@ -34,20 +31,30 @@
             switch(ev.button) {
                 // left
                 case 0:
-                    let i = parseInt(counter.innerText);
+                    let i = window.localStorage.getItem("counter");
                     counter.style.fontSize = "145px";
-                    counter.innerText = i + 1;
-                    window.localStorage.setItem("counter", counter.innerText);
+                    if (i === counter.innerText) {
+                        counter.innerText = parseInt(i) + 1;
+                        window.localStorage.setItem("counter", counter.innerText);
+                    } else {
+                        counter.innerText = 0;
+                        window.localStorage.setItem("counter", "0");
+                    }
                     break;
 
                 // right
                 case 2:
                     let j = parseInt(counter.innerText);
                     counter.style.fontSize = "145px";
-                    let data = j - 1;
+                    let data = parseInt(j) - 1;
                     if (data < 0) data = 0;
-                    counter.innerText = data;
-                    window.localStorage.setItem("counter", counter.innerText);
+                    if (j === counter.innerText) {
+                        counter.innerText = data;
+                        window.localStorage.setItem("counter", counter.innerText);
+                    } else {
+                        counter.innerText = 0;
+                        window.localStorage.setItem("counter", "0");
+                    }
                     break;
             }
         });
