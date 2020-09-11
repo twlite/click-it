@@ -1,2 +1,2 @@
 # click-it
-lol
+Just **[CLICK IT](https://click-it-lol.netlify.app/)**
