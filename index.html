@@ -24,7 +24,7 @@
 
     <script defer>
         const counter = document.getElementById("counter");
-        const item = window.localStorage.getItem("counter");
+        const item = window.localStorage.getItem("counter") || "0";
         counter.innerText = item;
 
         counter.addEventListener("mousedown", ev => {
