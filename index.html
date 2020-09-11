@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Me</title>
+    <style>
+        body {
+            background-color: #3a404a;
+            color: #FFFFFF;
+        }
+
+        #counter {
+            text-align: center;
+            margin-top: 25rem;
+            font-size: 150px;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="counter">0</h1>
+
+    <script defer>
+        const counter = document.getElementById("counter");
+        const item = window.localStorage.getItem("counter");
+        counter.innerText = item;
+
+        counter.addEventListener("mousedown", ev => {
+            switch(ev.button) {
+                // left
+                case 0:
+                    let i = parseInt(counter.innerText);
+                    counter.style.fontSize = "145px";
+                    counter.innerText = i + 1;
+                    window.localStorage.setItem("counter", counter.innerText);
+                    break;
+
+                // right
+                case 2:
+                    let j = parseInt(counter.innerText);
+                    counter.style.fontSize = "145px";
+                    let data = j - 1;
+                    if (data < 0) data = 0;
+                    counter.innerText = data;
+                    window.localStorage.setItem("counter", counter.innerText);
+                    break;
+            }
+        });
+
+        counter.addEventListener("mouseup", ev => {
+            counter.style.fontSize = "150px";
+        })
+
+        document.addEventListener("contextmenu", e => e.preventDefault());
+    </script>
+</body>
+</html>
